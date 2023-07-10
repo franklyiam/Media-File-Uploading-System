@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Home</h2>
+<h3>Media Uploading System</h3>
+
+<div class="container-fluid bg-info">
+    <div class="padding">
+        <div class="col-lg-6">
+            <h3>Description</h3>
+            <p>
+                The Media Uploading System not only allows any user to upload files, images, and videos, but the system also enables the user to view the files which they have previously uploaded. Upon that,
+                the user is able to delete or download the files on the system. The system consists of four main sections, namely, Home, Files, Images, and Videos and a secondary section consisting of the information about the web application author.
+            </p>
+
+            <br />
+            <h4>Home</h4>
+            <p>In the Home section of the system, by using the form, the user is able to select and upload any file, image, and video of their choosing from their device.</p>
+
+            <h4>Files</h4>
+            <p>The files page displays a list of all the Files that the user has uploaded with the functionality to delete and download the file.</p>
+
+            <h4>Images</h4>
+            <p>In the Images section of the system, the user is able to view all the images which they have uploaded onto the system as well as delete or download the images.</p>
+
+            <h4>Videos</h4>
+            <p>In the Videos section of the system, the user is able to view all the videos which they have uploaded onto the system as well as delete or download the videos.</p>
+        </div>
+        <div class="col-lg-6">
+            <h3>Option Selection</h3>
+            @model HW03.Models.FileModel
+            @using (Html.BeginForm("Home", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    @Html.RadioButtonFor(m => m.FileType, "Document")
+                    <label>Document</label>
+                </div>
+                <div>
+                    @Html.RadioButtonFor(m => m.FileType, "Image")
+                    <label>Image</label>
+                </div>
+                <div>
+                    @Html.RadioButtonFor(m => m.FileType, "Video")
+                    <label>Video</label>
+                </div>
+
+                <br />
+                <div>
+                    <input type="file" id="file" name="files" />
+                </div>
+                <br />
+                <div><input type="submit" value="Submit" /></div>
+            }
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<HW03.Models.FileModel>
+
+@{
+    ViewBag.Title = "File";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Documents of Any File Type</h2>
+<h3>Documents Folder</h3>
+
+<table class="table bg-info">
+    <thead style="background-color:black; color:white">
+        <tr>
+            <th>File Name</th>
+            <th class="text-center">DOWNLOAD OPTION</th>
+            <th class="text-center">DELETE OPTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => file.FileName)
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName }, new { @class = "btn btn-sm btn-success" })
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("Delete", "DeleteFile", new { fileName = file.FileName }, new { @class = "btn btn-sm btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<HW03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Images";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Images</h2>
+<h3>Images Folder - Images of any filetype</h3>
+
+<div class="container-fluid bg-info">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 text-center text-wrap text-truncate" style="padding-top:30px; padding-left:5px; padding-right:5px; padding-bottom:5px;">
+                    <a class="fancybox" data-fancybox="gallery" rel="gallery" href="~/Media/Images/@item.FileName">
+                        <img style="width:300px; height:200px" src="~/Media/Images/@item.FileName" />
+                    </a>
+                    <p>@item.FileName</p>
+                    <span>
+                        @Html.ActionLink("Download", "DownloadFile", new { fileName = item.FileName }, new { @class = "btn btn-sm btn-success" })
+                    </span>
+                    <span>
+                        @Html.ActionLink("Delete", "DeleteFile", new { fileName = item.FileName }, new { @class = "btn btn-sm btn-danger" })
+                    </span>
+                </div>
+            }
+        </div>
+</div>
+
+
